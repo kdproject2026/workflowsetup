@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacant Land Outreach - GoHighLevel Workflow Blueprint</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6f8;
+    color: #1a2332;
+    line-height: 1.6;
+    padding: 30px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 {
+    font-size: 30px;
+    color: #0d3b66;
+    margin-bottom: 8px;
+    border-bottom: 3px solid #f4a261;
+    padding-bottom: 12px;
+  }
+  .subtitle { color: #5a6b7d; margin-bottom: 30px; font-size: 15px; }
+
+  .toc {
+    background: #fff;
+    border-left: 5px solid #2a9d8f;
+    border-radius: 10px;
+    padding: 18px 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .toc h3 { color: #0d3b66; font-size: 16px; margin-bottom: 10px; }
+  .toc ol { padding-left: 22px; font-size: 14px; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: #0d3b66; text-decoration: none; font-weight: 500; }
+  .toc a:hover { color: #f4a261; text-decoration: underline; }
+
+  .tag-legend {
+    background: #fff3cd;
+    border-left: 4px solid #f4a261;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  .tag-legend h3 { color: #0d3b66; margin-bottom: 8px; font-size: 15px; }
+  .tag-legend table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .tag-legend th, .tag-legend td {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid #f0e4c2;
+    font-size: 13px;
+  }
+  .tag-legend th { color: #0d3b66; font-weight: 700; }
+  .tag-legend code {
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #0d3b66;
+    font-weight: 600;
+    font-size: 12.5px;
+  }
+
+  .workflow {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 26px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    border-left: 5px solid #0d3b66;
+  }
+  .workflow.bonus { border-left-color: #9b5de5; }
+  .workflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .workflow h2 {
+    font-size: 21px;
+    color: #0d3b66;
+  }
+  .workflow.bonus h2 { color: #6a3eb5; }
+  .badge {
+    background: #0d3b66;
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge.bonus { background: #9b5de5; }
+  .workflow .purpose {
+    font-size: 13.5px;
+    color: #5a6b7d;
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .meta-box {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .meta-box .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f4a261;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  .meta-box .value {
+    font-size: 13.5px;
+    color: #1a2332;
+  }
+  .meta-box code {
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #0d3b66;
+    font-weight: 600;
+    font-size: 12.5px;
+    display: inline-block;
+    margin: 2px 2px;
+  }
+
+  .steps-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0d3b66;
+    margin: 14px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .step {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-left: 3px solid #2a9d8f;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .step-num {
+    display: inline-block;
+    background: #0d3b66;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .step-type {
+    display: inline-block;
+    background: #e1e8ed;
+    color: #0d3b66;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-left: 4px;
+  }
+  .step-type.wait { background: #fff3cd; color: #a06a00; }
+  .step-type.sms { background: #d1f0e8; color: #1b7a6b; }
+  .step-type.tag { background: #ffd6d6; color: #a02020; }
+  .step-type.if { background: #e0d1f5; color: #6a3eb5; }
+  .step-type.note { background: #d6e9ff; color: #1c5a9e; }
+  .step-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1a2332;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: #5a6b7d;
+    margin-top: 4px;
+    padding-left: 32px;
+  }
+  .step-desc code {
+    background: #fff;
+    border: 1px solid #e1e8ed;
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: #0d3b66;
+    font-size: 12px;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #0d3b66;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: #f4a261; }
+  .copy-btn.copied { background: #2a9d8f; }
+
+  .branch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+    padding-left: 32px;
+  }
+  .branch-box {
+    background: #fff;
+    border: 1px dashed #c5d1de;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+  .branch-box.yes { border-color: #2a9d8f; }
+  .branch-box.no { border-color: #e76f51; }
+  .branch-box .branch-label {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .branch-box.yes .branch-label { color: #2a9d8f; }
+  .branch-box.no .branch-label { color: #e76f51; }
+
+  .flow-diagram {
+    background: linear-gradient(135deg, #0d3b66 0%, #1c5a9e 100%);
+    color: #fff;
+    padding: 22px 26px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  .flow-diagram h3 { font-size: 17px; margin-bottom: 14px; }
+  .flow-diagram pre {
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: #fff3cd;
+  }
+
+  .pause {
+    background: linear-gradient(135deg, #264653 0%, #2a9d8f 100%);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 10px;
+    margin: 24px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+
+  .pro-tip {
+    background: #e0f7f1;
+    border-left: 4px solid #2a9d8f;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #1b5a4f;
+  }
+  .pro-tip strong { color: #0d6a55; }
+
+  .footer {
+    text-align: center;
+    color: #8a9aab;
+    font-size: 12px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e8ed;
+  }
+
+  @media (max-width: 700px) {
+    .meta-grid, .branch { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Vacant Land Outreach — GoHighLevel Workflow Blueprint</h1>
+  <p class="subtitle">Complete 4-workflow architecture with tag-based routing, follow-up sequences, and bonus automations. Build-ready inside GHL.</p>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>📋 Workflow Index</h3>
+    <ol>
+      <li><a href="#flow">Master Flow Diagram</a></li>
+      <li><a href="#tags">Tag Dictionary</a></li>
+      <li><a href="#wf1">Workflow 1 — Initial Outreach (Day 1)</a></li>
+      <li><a href="#wf2">Workflow 2 — Week 1 Follow-Up Drip (Day 2–7)</a></li>
+      <li><a href="#wf3">Workflow 3 — 1-Month Reactivation</a></li>
+      <li><a href="#wf4">Workflow 4 — 1-Year Final Touch</a></li>
+      <li><a href="#bonus">Bonus Automations (Suggested)</a></li>
+    </ol>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="flow-diagram" id="flow">
+    <h3>🗺️ Master Flow Diagram</h3>
+<pre>
+NEW LEAD IMPORTED
+      │
+      ▼
+┌─────────────────────────────┐
+│ WORKFLOW 1 — Initial Outreach│  (Day 1)
+└─────────────────────────────┘
+      │
+      ├── REPLY? ──► tag: hot-lead-replied ──► COLD LEAD STAGE (manual outreach)
+      │
+      └── NO REPLY (24h) ──► tag: no-reply-day1 ──┐
+                                                  ▼
+                              ┌─────────────────────────────┐
+                              │ WORKFLOW 2 — Follow-Ups 1–7 │  (Day 2–7)
+                              └─────────────────────────────┘
+                                                  │
+                                ├── REPLY at any step? ──► tag: hot-lead-replied ──► COLD LEAD STAGE
+                                │
+                                └── NO REPLY after FU7 ──► tag: no-reply-week1 ──┐
+                                                                                  ▼
+                                                              ┌─────────────────────────────┐
+                                                              │ WORKFLOW 3 — 1-Month Touch  │
+                                                              └─────────────────────────────┘
+                                                                                  │
+                                                                ├── REPLY? ──► tag: hot-lead-replied ──► COLD LEAD STAGE
+                                                                │
+                                                                └── NO REPLY ──► tag: no-reply-month1 ──┐
+                                                                                                          ▼
+                                                                                      ┌─────────────────────────────┐
+                                                                                      │ WORKFLOW 4 — 1-Year Touch   │
+                                                                                      └─────────────────────────────┘
+                                                                                                          │
+                                                                                          ├── REPLY? ──► COLD LEAD STAGE
+                                                                                          │
+                                                                                          └── NO REPLY ──► tag: dead-lead-archive
+</pre>
+  </div>
+
+  <!-- TAG DICTIONARY -->
+  <div class="tag-legend" id="tags">
+    <h3>🏷️ Tag Dictionary (Create these in GHL → Settings → Tags first)</h3>
+    <table>
+      <thead>
+        <tr><th>Tag</th><th>Purpose</th><th>Set By</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>land-lead-new</code></td><td>Entry tag — triggers Workflow 1</td><td>Manual import / form</td></tr>
+        <tr><td><code>hot-lead-replied</code></td><td>Lead responded — stops drips, moves to Cold Lead Stage</td><td>Inbound SMS trigger</td></tr>
+        <tr><td><code>no-reply-day1</code></td><td>Triggers Workflow 2 (Follow-Up drip)</td><td>Workflow 1 end</td></tr>
+        <tr><td><code>no-reply-week1</code></td><td>Triggers Workflow 3 (1-month touch)</td><td>Workflow 2 end</td></tr>
+        <tr><td><code>no-reply-month1</code></td><td>Triggers Workflow 4 (1-year touch)</td><td>Workflow 3 end</td></tr>
+        <tr><td><code>dead-lead-archive</code></td><td>Final state — archive / suppress</td><td>Workflow 4 end</td></tr>
+        <tr><td><code>cold-lead-stage</code></td><td>Active manual outreach pipeline</td><td>On any reply</td></tr>
+        <tr><td><code>opted-out</code></td><td>STOP received — suppress all sends</td><td>Keyword trigger</td></tr>
+        <tr><td><code>do-not-contact</code></td><td>Permanent suppression</td><td>Manual / opt-out</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WORKFLOW 1 -->
+  <div class="workflow" id="wf1">
+    <div class="workflow-header">
+      <h2>⚡ Workflow 1 — Initial Outreach</h2>
+      <span class="badge">Day 1 • Entry Point</span>
+    </div>
+    <p class="purpose">Purpose: Fire the first SMS, wait 24h, then either route to Cold Lead Stage (if reply) or hand off to Workflow 2 (if silent).</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Contact Tag Added: <code>land-lead-new</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (Reply)</div>
+        <div class="value"><code>hot-lead-replied</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (No Reply)</div>
+        <div class="value"><code>no-reply-day1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Send Window</div>
+        <div class="value">9:00 AM – 7:00 PM (contact timezone)</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Workflow Steps</div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">1</span>Trigger <span class="step-type">Trigger</span></div>
+      <div class="step-desc">Contact Tag Added → <code>land-lead-new</code></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">2</span>If/Else — Suppression Check <span class="step-type if">Condition</span></div>
+      <div class="step-desc">Has Tag <code>opted-out</code> OR <code>do-not-contact</code>? → <strong>Exit Workflow</strong></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">3</span>Send SMS — Initial Outreach <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hey {{contact.first_name}}, we have caught interest in your lot at {{contact.address1}} are you ready to get rid of it? Reply STOP to opt out.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">4</span>Wait — 24 Hours <span class="step-type wait">Wait</span></div>
+      <div class="step-desc">Wait duration: <code>24 hours</code> (or "Wait until next day 10:00 AM" for cleaner sends)</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">5</span>If/Else — Did They Reply? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">Check: Contact has tag <code>hot-lead-replied</code> (set by separate Inbound SMS trigger — see Bonus #1)</div>
+      <div class="branch">
+        <div class="branch-box yes">
+          <div class="branch-label">✅ YES — Replied</div>
+          Add tag: <code>cold-lead-stage</code><br>
+          Remove tag: <code>land-lead-new</code><br>
+          Send internal notification to sales rep<br>
+          → <strong>Exit Workflow</strong>
+        </div>
+        <div class="branch-box no">
+          <div class="branch-label">❌ NO — Silent</div>
+          Add tag: <code>no-reply-day1</code><br>
+          Remove tag: <code>land-lead-new</code><br>
+          → Triggers Workflow 2 automatically
+        </div>
+      </div>
+    </div>
+
+    <div class="pro-tip"><strong>💡 Pro Tip:</strong> Set up a separate "Inbound SMS Received" workflow that auto-applies <code>hot-lead-replied</code> the moment any reply comes in. This way every workflow's If/Else can simply check for that tag.</div>
+  </div>
+
+  <!-- WORKFLOW 2 -->
+  <div class="workflow" id="wf2">
+    <div class="workflow-header">
+      <h2>🔁 Workflow 2 — Week 1 Follow-Up Drip</h2>
+      <span class="badge">Day 2 – Day 7 • 7 Follow-Ups</span>
+    </div>
+    <p class="purpose">Purpose: Send Follow-Up 1 through Follow-Up 7 one day apart. After every send, check for reply. If yes → Cold Lead Stage. If no reply by end of FU7 → Workflow 3.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Contact Tag Added: <code>no-reply-day1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (Reply)</div>
+        <div class="value"><code>hot-lead-replied</code> → <code>cold-lead-stage</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (No Reply)</div>
+        <div class="value"><code>no-reply-week1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Total Duration</div>
+        <div class="value">~6 days (FU1 fires Day 2, FU7 fires Day 7)</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Workflow Steps (Repeat Pattern × 7)</div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">1</span>Trigger <span class="step-type">Trigger</span></div>
+      <div class="step-desc">Contact Tag Added → <code>no-reply-day1</code></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">2</span>Wait — Until Next Day 10:00 AM <span class="step-type wait">Wait</span></div>
+      <div class="step-desc">Ensures FU1 fires Day 2 morning, not random hour</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">3</span>If/Else — Already Replied? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">Has tag <code>hot-lead-replied</code>? → YES: jump to Exit-Reply branch (step 18). NO: continue.</div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">4</span>Send SMS — Follow-Up 1 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hi {{contact.first_name}}, just circling back on your lot at {{contact.address1}}. Did our message reach you? Happy to share a cash offer if you're open to it.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">5</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+      <div class="step-desc">Wait 1 day → check <code>hot-lead-replied</code> → if YES exit, if NO continue</div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">6</span>Send SMS — Follow-Up 2 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hey {{contact.first_name}}, we buy land directly — no agents, no closing costs, we cover everything. Still interested in your lot at {{contact.address1}} if you'd like a no-obligation number.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">7</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">8</span>Send SMS — Follow-Up 3 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hi {{contact.first_name}}, a lot of owners we work with hold land they no longer use but still pay taxes on it. If that sounds like {{contact.address1}}, we'd love to make it easy for you.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">9</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">10</span>Send SMS — Follow-Up 4 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hey {{contact.first_name}}, we recently closed on a few parcels in your area. Quick, clean, no surprises. Open to seeing what we can offer for your lot at {{contact.address1}}?</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">11</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">12</span>Send SMS — Follow-Up 5 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hi {{contact.first_name}}, simple yes/no — are you open to selling {{contact.address1}} this year if the price was right?</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">13</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">14</span>Send SMS — Follow-Up 6 <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">{{contact.first_name}}, would you rather we stop reaching out, or keep you on our list in case we can help later? Just want to respect your time.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">15</span>Wait 24h → If/Else Reply Check <span class="step-type wait">Wait + If</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">16</span>Send SMS — Follow-Up 7 (Closer) <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">{{contact.first_name}}, this'll be our last note for now. If selling {{contact.address1}} ever crosses your mind, text us anytime — we'll be ready. Thanks!</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">17</span>Wait 24h — Final Reply Window <span class="step-type wait">Wait</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">18</span>Final If/Else — Replied at Any Point? <span class="step-type if">Condition</span></div>
+      <div class="branch">
+        <div class="branch-box yes">
+          <div class="branch-label">✅ YES — Replied</div>
+          Add tag: <code>cold-lead-stage</code><br>
+          Remove tag: <code>no-reply-day1</code><br>
+          Notify rep<br>
+          → <strong>Exit Workflow</strong>
+        </div>
+        <div class="branch-box no">
+          <div class="branch-label">❌ NO — Still Silent</div>
+          Add tag: <code>no-reply-week1</code><br>
+          Remove tag: <code>no-reply-day1</code><br>
+          → Triggers Workflow 3
+        </div>
+      </div>
+    </div>
+
+    <div class="pro-tip"><strong>💡 Pro Tip:</strong> Use GHL's "Goal Event" feature — set the goal as "Tag <code>hot-lead-replied</code> Added". Any contact who replies mid-drip jumps straight to the exit branch automatically, no manual If/Else needed at every step.</div>
+  </div>
+
+  <div class="pause">⏸ WAIT 1 MONTH (between Workflow 2 and Workflow 3)</div>
+
+  <!-- WORKFLOW 3 -->
+  <div class="workflow" id="wf3">
+    <div class="workflow-header">
+      <h2>📅 Workflow 3 — 1-Month Reactivation</h2>
+      <span class="badge">Day ~37 • Single Touch</span>
+    </div>
+    <p class="purpose">Purpose: Re-engage cold leads 30 days after Workflow 2 ended with a fresh angle.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Contact Tag Added: <code>no-reply-week1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (Reply)</div>
+        <div class="value"><code>hot-lead-replied</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (No Reply)</div>
+        <div class="value"><code>no-reply-month1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Send Window</div>
+        <div class="value">10:00 AM – 6:00 PM weekdays</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Workflow Steps</div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">1</span>Trigger <span class="step-type">Trigger</span></div>
+      <div class="step-desc">Contact Tag Added → <code>no-reply-week1</code></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">2</span>Wait — 30 Days <span class="step-type wait">Wait</span></div>
+      <div class="step-desc">Wait duration: <code>30 days</code></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">3</span>If/Else — Suppression / Already Replied? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">Has <code>opted-out</code>, <code>do-not-contact</code>, or <code>hot-lead-replied</code>? → Exit</div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">4</span>Send SMS — 1-Month Touch <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hey {{contact.first_name}}, checking in one more time on {{contact.address1}}. Anything change on your end? Still happy to make an offer if it's useful.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">5</span>Wait — 48 Hours <span class="step-type wait">Wait</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">6</span>If/Else — Did They Reply? <span class="step-type if">Condition</span></div>
+      <div class="branch">
+        <div class="branch-box yes">
+          <div class="branch-label">✅ YES — Replied</div>
+          Add tag: <code>cold-lead-stage</code><br>
+          Remove tag: <code>no-reply-week1</code><br>
+          Notify rep<br>
+          → <strong>Exit</strong>
+        </div>
+        <div class="branch-box no">
+          <div class="branch-label">❌ NO — Silent</div>
+          Add tag: <code>no-reply-month1</code><br>
+          Remove tag: <code>no-reply-week1</code><br>
+          → Triggers Workflow 4
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pause">⏸ WAIT 1 YEAR (between Workflow 3 and Workflow 4)</div>
+
+  <!-- WORKFLOW 4 -->
+  <div class="workflow" id="wf4">
+    <div class="workflow-header">
+      <h2>📅 Workflow 4 — 1-Year Final Touch</h2>
+      <span class="badge">Day ~400 • Final Outreach</span>
+    </div>
+    <p class="purpose">Purpose: Annual check-in. Life changes (taxes, inheritance, retirement) may have flipped their stance. Last shot before archiving.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Contact Tag Added: <code>no-reply-month1</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (Reply)</div>
+        <div class="value"><code>hot-lead-replied</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Exit Tag (No Reply)</div>
+        <div class="value"><code>dead-lead-archive</code></div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Wait Duration</div>
+        <div class="value">365 days from trigger</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Workflow Steps</div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">1</span>Trigger <span class="step-type">Trigger</span></div>
+      <div class="step-desc">Contact Tag Added → <code>no-reply-month1</code></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">2</span>Wait — 365 Days <span class="step-type wait">Wait</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">3</span>If/Else — Suppression / Already Replied? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">Has <code>opted-out</code>, <code>do-not-contact</code>, or <code>hot-lead-replied</code>? → Exit</div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">4</span>Send SMS — 1-Year Annual Check-In <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hey {{contact.first_name}}, it's been about a year since we last connected about {{contact.address1}}. Things change — figured we'd check if selling is on your radar now.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">5</span>Wait — 3 Days <span class="step-type wait">Wait</span></div>
+    </div>
+
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">6</span>Send SMS — Final Closer <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Hi {{contact.first_name}}, last check-in from us on {{contact.address1}}. If anything ever changes, you've got our number. Wishing you the best.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">7</span>Wait — 48 Hours <span class="step-type wait">Wait</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="step-num">8</span>If/Else — Did They Reply? <span class="step-type if">Condition</span></div>
+      <div class="branch">
+        <div class="branch-box yes">
+          <div class="branch-label">✅ YES — Replied</div>
+          Add tag: <code>cold-lead-stage</code><br>
+          Notify rep<br>
+          → <strong>Exit</strong>
+        </div>
+        <div class="branch-box no">
+          <div class="branch-label">❌ NO — Final Silence</div>
+          Add tag: <code>dead-lead-archive</code><br>
+          Remove tag: <code>no-reply-month1</code><br>
+          Move pipeline stage → "Archived"<br>
+          → <strong>Exit (terminal)</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BONUS AUTOMATIONS -->
+  <h1 id="bonus" style="margin-top:40px;">🚀 Bonus Workflow Automations (Highly Recommended)</h1>
+  <p class="subtitle">Stand-alone supporting workflows that make the core 4 bulletproof.</p>
+
+  <!-- BONUS 1 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 1 — Inbound Reply Detector (Global)</h2>
+      <span class="badge bonus">Always-On</span>
+    </div>
+    <p class="purpose">Purpose: The single source of truth for "did they reply?" Auto-tags any inbound SMS so all 4 workflows can branch cleanly.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Customer Replied (Inbound Message → SMS)</div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Filter</div>
+        <div class="value">Contact has any of: <code>land-lead-new</code>, <code>no-reply-day1</code>, <code>no-reply-week1</code>, <code>no-reply-month1</code></div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step"><div class="step-title"><span class="step-num">1</span>Trigger: Customer Replied → SMS <span class="step-type">Trigger</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">2</span>If/Else: Message contains "STOP" / "UNSUBSCRIBE" / "REMOVE"? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">YES → Add <code>opted-out</code> + <code>do-not-contact</code>, send confirmation: "You've been removed. Reply START to resubscribe." → Exit<br>NO → continue</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">3</span>Add Tag <span class="step-type tag">Tag</span></div><div class="step-desc">Add: <code>hot-lead-replied</code></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">4</span>Add Tag <span class="step-type tag">Tag</span></div><div class="step-desc">Add: <code>cold-lead-stage</code></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">5</span>Move Opportunity → "Engaged / Manual Outreach" stage <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">6</span>Internal Notification <span class="step-type note">Notify</span></div>
+      <div class="step-desc">Email/SMS to sales rep: "🔥 {{contact.first_name}} just replied about {{contact.address1}}. Call now."</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">7</span>Create Task <span class="step-type note">Task</span></div>
+      <div class="step-desc">Title: "Call {{contact.first_name}} — replied to land outreach" • Due: in 2 hours</div>
+    </div>
+  </div>
+
+  <!-- BONUS 2 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 2 — Opt-Out / Compliance Workflow</h2>
+      <span class="badge bonus">Compliance Critical</span>
+    </div>
+    <p class="purpose">Purpose: Instantly suppress any contact who replies STOP. TCPA-required.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Inbound SMS contains: STOP, UNSUBSCRIBE, REMOVE, QUIT, CANCEL, END</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step"><div class="step-title"><span class="step-num">1</span>Add Tags: <code>opted-out</code>, <code>do-not-contact</code> <span class="step-type tag">Tag</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">2</span>Remove Tags: All workflow stage tags <span class="step-type tag">Tag</span></div>
+      <div class="step-desc">Remove: <code>land-lead-new</code>, <code>no-reply-day1</code>, <code>no-reply-week1</code>, <code>no-reply-month1</code></div>
+    </div>
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">3</span>Send Confirmation SMS <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">You've been unsubscribed and won't receive further messages. Reply START to opt back in.</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">4</span>Disable Marketing Channel <span class="step-type note">DND</span></div>
+      <div class="step-desc">Set contact DND status → SMS: ON</div>
+    </div>
+  </div>
+
+  <!-- BONUS 3 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 3 — Cold Lead Stage Nurture (Manual Outreach Support)</h2>
+      <span class="badge bonus">Sales Enablement</span>
+    </div>
+    <p class="purpose">Purpose: When a lead enters Cold Lead Stage, give your rep a structured cadence of reminders.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Contact Tag Added: <code>cold-lead-stage</code></div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step"><div class="step-title"><span class="step-num">1</span>Create Task — "Call within 2 hours" <span class="step-type note">Task</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">2</span>Wait 2 days <span class="step-type wait">Wait</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">3</span>If/Else — Opportunity moved to "Negotiating" stage? <span class="step-type if">Condition</span></div>
+      <div class="step-desc">YES → Exit. NO → Create Task: "Second call attempt"</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">4</span>Wait 3 days → Create Task: "Send personalized offer email" <span class="step-type note">Task</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">5</span>Wait 7 days → If still no movement, notify manager <span class="step-type note">Notify</span></div></div>
+  </div>
+
+  <!-- BONUS 4 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 4 — Hot Keyword Detector (Buying Signals)</h2>
+      <span class="badge bonus">Sales Acceleration</span>
+    </div>
+    <p class="purpose">Purpose: Catch high-intent replies like "how much", "offer", "yes", "interested" and escalate immediately.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Inbound SMS contains: "how much", "offer", "yes", "interested", "price", "cash", "sell"</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step"><div class="step-title"><span class="step-num">1</span>Add Tag <code>hot-buyer-signal</code> <span class="step-type tag">Tag</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">2</span>Move Opportunity → "Hot Lead" pipeline stage <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">3</span>Send urgent rep notification (SMS + Email + Push) <span class="step-type note">Notify</span></div>
+      <div class="step-desc">"🚨 HOT BUYER SIGNAL — {{contact.first_name}} at {{contact.address1}} just said: {{message.body}}"</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">4</span>Create Task — "URGENT: Call now" with 30-min due time <span class="step-type note">Task</span></div></div>
+  </div>
+
+  <!-- BONUS 5 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 5 — Wrong Number / Not Owner Handler</h2>
+      <span class="badge bonus">Data Hygiene</span>
+    </div>
+    <p class="purpose">Purpose: Catch "wrong number" or "not the owner" replies, tag them, and stop all future sends.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Inbound SMS contains: "wrong number", "not me", "don't own", "sold it", "no longer own"</div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step"><div class="step-title"><span class="step-num">1</span>Add Tags: <code>bad-data</code>, <code>do-not-contact</code> <span class="step-type tag">Tag</span></div></div>
+    <div class="step"><div class="step-title"><span class="step-num">2</span>Remove all active workflow tags <span class="step-type tag">Tag</span></div></div>
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">3</span>Send polite acknowledgement <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Thanks for letting us know — we'll update our records and stop reaching out. Apologies for the bother.</div>
+    </div>
+    <div class="step"><div class="step-title"><span class="step-num">4</span>Notify data team for skip-trace cleanup <span class="step-type note">Notify</span></div></div>
+  </div>
+
+  <!-- BONUS 6 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 6 — Birthday / Holiday Soft Touch (Year-Round Nurture)</h2>
+      <span class="badge bonus">Long-Term Brand</span>
+    </div>
+    <p class="purpose">Purpose: Keep your brand warm with non-salesy touches during the long quiet gaps between Workflows 3 and 4.</p>
+
+    <div class="meta-grid">
+      <div class="meta-box">
+        <div class="label">Trigger</div>
+        <div class="value">Recurring → Specific dates (e.g., Thanksgiving, New Year)</div>
+      </div>
+      <div class="meta-box">
+        <div class="label">Filter</div>
+        <div class="value">Has tag <code>no-reply-month1</code> AND does NOT have <code>opted-out</code></div>
+      </div>
+    </div>
+
+    <div class="steps-title">Steps</div>
+    <div class="step">
+      <button class="copy-btn">Copy</button>
+      <div class="step-title"><span class="step-num">1</span>Send Holiday SMS <span class="step-type sms">SMS</span></div>
+      <div class="step-desc">Happy holidays from our team, {{contact.first_name}}! Wishing you a great year ahead. — [Your Company]</div>
+    </div>
+    <div class="pro-tip"><strong>💡 Why this works:</strong> Soft brand touches mid-cycle dramatically increase reply rates on the Workflow 4 1-year touch — recipient already feels familiar with you.</div>
+  </div>
+
+  <!-- BONUS 7 -->
+  <div class="workflow bonus">
+    <div class="workflow-header">
+      <h2>Bonus 7 — Lead Scoring & Pipeline Auto-Mover</h2>
+      <span class="badge bonus">Reporting</span>
+    </div>
+    <p class="purpose">Purpose: Auto-update opportunity stages based on tags so your pipeline view is always accurate without manual dragging.</p>
+
+    <div class="steps-title">Rules</div>
+    <div class="step"><div class="step-title">When tag <code>land-lead-new</code> added → Pipeline stage: "New Lead" <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title">When tag <code>no-reply-day1</code> added → Pipeline stage: "Following Up" <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title">When tag <code>hot-lead-replied</code> added → Pipeline stage: "Engaged" + score +25 <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title">When tag <code>hot-buyer-signal</code> added → Pipeline stage: "Hot Lead" + score +50 <span class="step-type note">Pipeline</span></div></div>
+    <div class="step"><div class="step-title">When tag <code>dead-lead-archive</code> added → Pipeline stage: "Archived" <span class="step-type note">Pipeline</span></div></div>
+  </div>
+
+  <div class="footer">
+    <strong>Build Order:</strong> Tags → Pipeline Stages → Bonus 2 (Opt-Out) → Bonus 1 (Reply Detector) → Workflow 1 → Workflow 2 → Workflow 3 → Workflow 4 → Bonus 3–7<br><br>
+    Compliance: TCPA, state-level wholesaling rules, and quiet-hours (8am–9pm contact local time) apply. Always test with internal numbers before going live.
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.parentElement.querySelector('.step-desc').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>
